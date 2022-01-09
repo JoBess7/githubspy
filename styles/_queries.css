@@ -1,0 +1,7 @@
+@media screen
+and (max-width: 620px) {
+    .info-top {flex-direction: column; align-items: center;}
+    .info-sub-flex {
+        padding: 3px 0 0 0;
+    }
+}

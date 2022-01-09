@@ -1,16 +1,16 @@
 .data {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to bottom, rgba(15, 15, 20, 1) 0%,rgba(15, 15, 20, 1) 650px,white 50%, whitesmoke 100%);
+    background: linear-gradient(to bottom, rgb(19, 19, 22) 0%,rgb(19, 19, 22) 650px, white 50%, whitesmoke 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 .avatar-container {
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
 }
 
 .avatar {
@@ -23,17 +23,47 @@
     margin-top: 20px;
     font-size: 25px;
     font-family: "Quicksand-Bold";
-    color: rgb(236, 234, 230);
+    color: rgb(247, 255, 255);
 }
 
 .login {
     margin-bottom: 20px;
     font-size: 16px;
     font-family: "Quicksand-Bold";
-    color: rgb(236, 234, 230);
 }
 
 .login:visited, .login {
-    color: rgb(73, 123, 216);
+    color: rgb(61, 125, 243);
     text-decoration: none !important;
+}
+
+.info-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-top {
+    display: flex;
+    flex-direction: row;
+}
+
+.info-sub-flex {
+    padding-right: 15px;
+    display: flex;
+}
+
+.info-sub-flex > svg {
+    padding-right: 3px;
+}
+
+.info-text {
+    color: rgb(178, 190, 188);
+    font-family: "Quicksand-SemiBold";
+    font-size: 12px;
+    align-self: center;
 }

@@ -1,11 +1,11 @@
 export default function Loader() {
-    return(
+    return (
         <div className="loader">
             <div className="lds-ellipsis">
-                <div/>
-                <div/>
-                <div/>
-                <div/>
+                <div />
+                <div />
+                <div />
+                <div />
             </div>
         </div>
     );
