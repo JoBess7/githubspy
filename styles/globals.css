@@ -1,16 +1,53 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@font-face {
+    font-family: 'Quicksand-Bold';
+    src: local('Quicksand-Bold'),
+        url(../assets/fonts/Quicksand-Bold.ttf)
+        format('truetype');
+    font-weight: normal;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+    font-family: 'Quicksand-Light';
+    src: local('Quicksand-Light'),
+        url(../assets/fonts/Quicksand-Light.ttf)
+        format('truetype');
+    font-weight: normal;
 }
 
-* {
-  box-sizing: border-box;
+@font-face {
+    font-family: 'Quicksand-Medium';
+    src: local('Quicksand-Medium'),
+        url(../assets/fonts/Quicksand-Medium.ttf)
+        format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Quicksand-Regular';
+    src: local('Quicksand-Regular'),
+        url(../assets/fonts/Quicksand-Regular.ttf)
+        format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Quicksand-Regular';
+    src: local('Quicksand-Regular'),
+        url(../assets/fonts/Quicksand-Regular.ttf)
+        format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Quicksand-SemiBold';
+    src: local('Quicksand-SemiBold'),
+        url(../assets/fonts/Quicksand-SemiBold.ttf)
+        format('truetype');
+    font-weight: normal;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
