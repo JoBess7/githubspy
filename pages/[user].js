@@ -25,7 +25,7 @@ export default function User() {
 
             userPoly.userStats(function (err, stats) {
                 if(err) {
-                    setError({active: true, message: ""});
+                    setError({active: true, message: "Are you sure this user exists?"});
                 } else {
                     resolve(stats);
                 }
@@ -36,7 +36,7 @@ export default function User() {
     const getUserInfo = (user) => {
         return fetch(`https://api.github.com/users/${user}`)
             .then(response => {
-                if (response.status === 404) return setError({ active: true, message: "" });
+                if (response.status === 404) return setError({ active: true, message: "Are you sure this user exists? top" });
                 if (response.status === 403) return setError({ active: true, message: "Limit rate exceeded, try again later." });
 
                 return response.json();
@@ -49,13 +49,13 @@ export default function User() {
     const getLimitRate = () => {
         return fetch(`https://api.github.com/rate_limit`)
             .then(response => {
-                if (response.status === 404) return setError({ active: true, message: "" });
+                if (response.status === 404) return setError({ active: true, message: "Limit rate exceeded, try again later." });
                 if (response.status === 403) return setError({ active: true, message: "Limit rate exceeded, try again later." });
 
                 return response.json();
             })
             .catch(error => {
-                setError({ active: true, message: "error in getlimitrate" });
+                setError({ active: true, message: "Honestly don't know what happened there..." });
             });
     };
 
@@ -83,6 +83,12 @@ export default function User() {
             Promise.all([getLimitRate(), getUserInfo(user), getPolyglotInfo(user), getRepos(user)])
                 .then((res) => {
                     setData({
+                        limitRate: res[0],
+                        userInfo: res[1],
+                        polyglot: res[2],
+                        repos: res[3]
+                    });
+                    console.log({
                         limitRate: res[0],
                         userInfo: res[1],
                         polyglot: res[2],
