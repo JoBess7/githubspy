@@ -4,6 +4,7 @@ import BackButton from "../components/BackButton";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import Data from "../render/Data";
+import GhPolyglot from "gh-polyglot";
 
 export default function User() {
 
@@ -11,10 +12,26 @@ export default function User() {
 
     const [error, setError] = useState({ active: false, message: "" })
     const [loaded, setLoaded] = useState(false);
+    const [data, setData] = useState({
+        limitRate: null,
+        userInfo: null,
+        polyglot: null,
+        repos: null
+    });
 
-    const [userInfo, setUserInfo] = useState(null);
-    const [limitRate, setLimitRate] = useState(null);
+    const getPolyglotInfo = (user) => {
+        return new Promise((resolve, reject) => {
+            var userPoly = new GhPolyglot(`${user}/git-stats`);
 
+            userPoly.userStats(function (err, stats) {
+                if(err) {
+                    setError({active: true, message: ""});
+                } else {
+                    resolve(stats);
+                }
+            });
+        });
+    };
 
     const getUserInfo = (user) => {
         return fetch(`https://api.github.com/users/${user}`)
@@ -40,19 +57,35 @@ export default function User() {
             .catch(error => {
                 setError({ active: true, message: "error in getlimitrate" });
             });
-    }
+    };
+
+    const getRepos = (user) => {
+        return new Promise((resolve, reject) => {
+            var userPoly = new GhPolyglot(`${user}/git-stats`);
+
+
+             userPoly.getAllRepos(function (err, stats) {
+                if(err) {
+                    setError({active: true, message: ""});
+                } else {
+                    resolve(stats);
+                }
+            });
+        });
+    };
+
 
     useEffect(() => {
         const user = router.query.id;
 
         if (user) {
-            Promise.all([getLimitRate(), getUserInfo(user)])
+            Promise.all([getLimitRate(), getUserInfo(user), getPolyglotInfo(user), getRepos(user)])
                 .then((res) => {
-                    console.log(res[0]);
-                    setUserInfo(res[1]);
-                    setLimitRate({
-                        remaining: res[0].rate.remaining,
-                        limit: res[0].rate.remaining
+                    setData({
+                        limitRate: res[0],
+                        userInfo: res[1],
+                        polyglot: res[2],
+                        repos: res[3]
                     });
                 }
                 )
@@ -83,7 +116,11 @@ export default function User() {
             return (
                 <div>
                     <BackButton />
-                    <Data userInfo={userInfo} />
+                    <Data 
+                        userInfo={data.userInfo}
+                        languages={data.polyglot}
+                        repos={data.repos}
+                    />
                 </div>
             );
         }

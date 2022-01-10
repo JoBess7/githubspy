@@ -1,9 +1,12 @@
 import Info from "../components/Info";
+import Charts from "../components/Charts";
+import Repos from "../components/Repos";
 
-export default function Data({ userInfo }) {
+export default function Data({ userInfo, languages, repos }) {
 
     const {
         public_repos,
+        created_at,
         avatar_url,
         following,
         followers,
@@ -36,6 +39,16 @@ export default function Data({ userInfo }) {
                 repoCount={public_repos}
                 following={following}
                 followers={followers}
+                date={created_at}
+            />
+
+            <Charts        
+                languages={languages}
+                repos={repos}
+            />
+
+            <Repos        
+                repos={repos}
             />
 
         </div>

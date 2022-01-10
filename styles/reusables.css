@@ -70,7 +70,7 @@
 .error {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(15, 15, 20, 1);
+    background-color: rgb(19, 19, 22);
     display: flex;
     flex-direction: column;
     justify-content: center;
