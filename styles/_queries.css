@@ -14,3 +14,29 @@ and (max-width: 730px) {
     .charts {grid-column-gap: 0px; grid-template-columns: auto;}
     .chart {margin-bottom: 40px;}
 }
+
+@media screen 
+and (max-width: 1200px) {
+    .repos-grid {grid-template-columns: auto auto auto;}
+}
+
+@media screen 
+and (max-width: 900px) {
+    .repos-grid {grid-template-columns: auto auto;}
+}
+
+@media screen 
+and (max-width: 550px) {
+    .repos-grid {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+    }
+    .repo {
+        width: 90vw;
+    }
+    .repos-title {font-size: 17px;}
+    .picker-text {font-size: 13px; padding: 0 3px 0 12px;}
+    .s-display {width: 40px;}
+    .s-by {width: 60px;}
+}

@@ -1,6 +1,6 @@
 .data {
     width: 100vw;
-    background: linear-gradient(to bottom, rgb(19, 19, 22) 0%,rgb(19, 19, 22) 550px, whitesmoke 550px, whitesmoke 100%);
+    background: linear-gradient(to bottom, rgb(19, 19, 22) 0%,rgb(19, 19, 22) 550px, rgb(240, 240, 240) 550px, rgb(233, 233, 233) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,7 +134,6 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 100px;
-    height: 100vh;
 }
 
 .repos-picker {
@@ -176,15 +175,86 @@
 }
 
 .repo {
+    transition: box-shadow .2s;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.15) -4px 9px 25px -6px;
     background-color: whitesmoke;
-    height: 140px;
-    width: 240px;
+    height: 160px;
+    width: 250px;
 }
 
-.repo-linker {
+.repo-linker,
+.repo-linker:visited {
     width: 100%;
     height: 100%;
     display:inline-block;
+    outline: none;
+    text-decoration: none;
+    color: rgb(48, 48, 48);
+    font-size: 15px;
+    font-family: "Quicksand-SemiBold";
+}
+
+.repo:hover {
+    box-shadow: rgba(0, 0, 0, .3) -4px 9px 25px -6px;
+}
+
+.repo-pad {
+    position: relative;
+    margin: 20px;
+    height: 140px;
+}
+
+.title-flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.title-flex > span {
+
+}
+
+.repo-icon {
+    padding-right: 8px;
+}
+
+.repo-desc > span {
+    text-overflow: ellipsis;
+    overflow:hidden;
+    font-family: "Quicksand-Medium";
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    color: rgb(87, 81, 81);
+    font-size: 12px;
+    text-align: justify;
+}
+
+.repo-info-1 {
+    display: flex;
+    align-items: center;
+}
+
+.repo-info {
+    font-family: "Quicksand-Medium";
+    font-size: 12px;
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.language-color {
+    margin-right: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.pd {
+    margin-right: 8px;
 }

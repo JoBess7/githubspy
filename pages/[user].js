@@ -37,12 +37,12 @@ export default function User() {
         return fetch(`https://api.github.com/users/${user}`)
             .then(response => {
                 if (response.status === 404) return setError({ active: true, message: "" });
-                if (response.status === 403) return setError({ active: true, message: "" });
+                if (response.status === 403) return setError({ active: true, message: "Limit rate exceeded, try again later." });
 
                 return response.json();
             })
             .catch(error => {
-                setError({ active: true, message: "error in getuserinfo" });
+                setError({ active: true, message: "Are you sure this user exists?"});
             });
     };
 
@@ -50,7 +50,7 @@ export default function User() {
         return fetch(`https://api.github.com/rate_limit`)
             .then(response => {
                 if (response.status === 404) return setError({ active: true, message: "" });
-                if (response.status === 403) return setError({ active: true, message: "" });
+                if (response.status === 403) return setError({ active: true, message: "Limit rate exceeded, try again later." });
 
                 return response.json();
             })
@@ -63,10 +63,11 @@ export default function User() {
         return new Promise((resolve, reject) => {
             var userPoly = new GhPolyglot(`${user}/git-stats`);
 
-
              userPoly.getAllRepos(function (err, stats) {
                 if(err) {
-                    setError({active: true, message: ""});
+                    if(err.includes("limit")) {
+                        setError({active: true, message: "Limit rate exceeded, try again later."});
+                    }
                 } else {
                     resolve(stats);
                 }
