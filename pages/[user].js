@@ -4,6 +4,7 @@ import BackButton from "../components/BackButton";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import Data from "../render/Data";
+import Footer from "../components/Footer";
 import GhPolyglot from "gh-polyglot";
 
 export default function User() {
@@ -121,13 +122,14 @@ export default function User() {
             );
         } else {
             return (
-                <div>
+                <div style={{marginBottom: "100px"}}>
                     <BackButton />
                     <Data 
                         userInfo={data.userInfo}
                         languages={data.polyglot}
                         repos={data.repos}
                     />
+                    <Footer/>
                 </div>
             );
         }

@@ -1,10 +1,11 @@
 {
+  "homepage": "http://githubspy.com",
   "name": "spy",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
   "dependencies": {
