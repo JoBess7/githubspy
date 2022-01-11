@@ -134,6 +134,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 100px;
+    width: 85vw;
 }
 
 .repos-picker {
@@ -161,10 +162,11 @@
 .repos-grid {
     position: relative;
     display: grid;
-    grid-template-columns: auto auto auto auto;
     grid-column-gap: 14px;
     grid-row-gap: 14px;
     margin-top: 20px;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .select-by {
@@ -180,7 +182,6 @@
     box-shadow: rgba(0, 0, 0, 0.15) -4px 9px 25px -6px;
     background-color: whitesmoke;
     height: 160px;
-    width: 250px;
 }
 
 .repo-linker,
