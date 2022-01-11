@@ -1,8 +1,9 @@
 import Info from "../components/Info";
 import Charts from "../components/Charts";
 import Repos from "../components/Repos";
+import Contributions from "../components/Contributions";
 
-export default function Data({ userInfo, languages, repos }) {
+export default function Data({user, userInfo, languages, repos }) {
 
     const {
         public_repos,
@@ -49,6 +50,10 @@ export default function Data({ userInfo, languages, repos }) {
 
             <Repos        
                 repos={repos}
+            />
+
+            <Contributions
+                user={user}
             />
 
         </div>

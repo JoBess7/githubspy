@@ -11,6 +11,7 @@ export default function User() {
 
     const router = useRouter();
 
+    const [user, setUser] = useState(router.query.id);
     const [error, setError] = useState({ active: false, message: "" })
     const [loaded, setLoaded] = useState(false);
     const [data, setData] = useState({
@@ -76,9 +77,7 @@ export default function User() {
         });
     };
 
-
     useEffect(() => {
-        const user = router.query.id;
 
         if (user) {
             Promise.all([getLimitRate(), getUserInfo(user), getPolyglotInfo(user), getRepos(user)])
@@ -87,13 +86,7 @@ export default function User() {
                         limitRate: res[0],
                         userInfo: res[1],
                         polyglot: res[2],
-                        repos: res[3]
-                    });
-                    console.log({
-                        limitRate: res[0],
-                        userInfo: res[1],
-                        polyglot: res[2],
-                        repos: res[3]
+                        repos: res[3],
                     });
                 }
                 )
@@ -128,6 +121,7 @@ export default function User() {
                         userInfo={data.userInfo}
                         languages={data.polyglot}
                         repos={data.repos}
+                        user={user}
                     />
                     <Footer/>
                 </div>
