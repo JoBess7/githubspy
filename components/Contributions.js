@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getGithubContributions } from 'github-contributions-counter';
+import { token } from "../secret/env";
 
 export default function Contributions({user}) {
 
@@ -9,7 +10,7 @@ export default function Contributions({user}) {
     const getContributions = (user, cYear) => {
         getGithubContributions({
             username: 'job',
-            token: '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' // secret
+            token: token
           }).then((r) => {
             setContribs(r);
           })
