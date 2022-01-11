@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 import { getTopRepos } from "../utils/chart";
 import FlipMove from "react-flip-move";
 import {BsJournalBookmark} from "react-icons/bs";
