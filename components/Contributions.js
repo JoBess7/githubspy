@@ -10,18 +10,16 @@ export default function Contributions({user}) {
     const [monthOrder, setMonthOrder] = useState(null);
 
     const getContributions = (user) => {
-        try {
-            getGithubContributions({
-                username: user,
-                token: "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"
-              }).then((r) => {
-                setContribs(r.data.data.user.contributionsCollection.contributionCalendar);
-                setMonthOrder(getMonthOrder(r.data.data.user.contributionsCollection.contributionCalendar));
-              })
-        }
-        catch(err) {
+        getGithubContributions({
+            username: user,
+            token: "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"
+            }).then((r) => {
+            setContribs(r.data.data.user.contributionsCollection.contributionCalendar);
+            setMonthOrder(getMonthOrder(r.data.data.user.contributionsCollection.contributionCalendar));
+            })
+            .catch((err) => {
 
-        }
+            });
     };
 
     useEffect(() => {
