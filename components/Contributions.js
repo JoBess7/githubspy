@@ -10,16 +10,10 @@ export default function Contributions({user}) {
     const [monthOrder, setMonthOrder] = useState(null);
 
     const getContributions = (user) => {
-        getGithubContributions({
-            username: user,
-            token: "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"
-            }).then((r) => {
-            setContribs(r.data.data.user.contributionsCollection.contributionCalendar);
-            setMonthOrder(getMonthOrder(r.data.data.user.contributionsCollection.contributionCalendar));
-            })
-            .catch((err) => {
-
-            });
+        return fetch("https://github-contributions.vercel.app/api/v1/jobess7")
+        .then((r) => {
+            console.log(r);
+        })
     };
 
     useEffect(() => {
