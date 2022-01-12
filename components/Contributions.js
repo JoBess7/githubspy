@@ -39,9 +39,9 @@ export default function Contributions({user}) {
                                     <td className="contrib-left-column"></td>
                                     <td className="contrib-months">
                                         {
-                                            monthOrder.map((month) => {
+                                            monthOrder.map((month, idx) => {
                                                 return (
-                                                    <span className="contrib-month">{month}</span>
+                                                    <span key={idx} className="contrib-month">{month}</span>
                                                 )
                                             })
                                         }
