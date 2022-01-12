@@ -13,7 +13,7 @@ export default function Contributions({user}) {
         try {
             getGithubContributions({
                 username: user,
-                token: token
+                token: "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"
               }).then((r) => {
                 setContribs(r.data.data.user.contributionsCollection.contributionCalendar);
                 setMonthOrder(getMonthOrder(r.data.data.user.contributionsCollection.contributionCalendar));
