@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getGithubContributions } from 'github-contributions-counter';
-import { token } from "../secret/env";
+import { token } from "./secret/env";
 import SimpleLoader from "./SimpleLoader";
 import { getMonthOrder, getParsedDate} from "../utils/date";
 

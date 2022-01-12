@@ -42,7 +42,7 @@ export default function Repos({repos}) {
                 </select>
             </div>
 
-   
+                <FlipMove className="repos-grid">
                 {
                     chosenRepos.map((repo, idx) => {
                         return (
@@ -84,7 +84,7 @@ export default function Repos({repos}) {
                         )
                     })
                 }
-
+                </FlipMove>
         </div>
     );
 }
