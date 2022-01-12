@@ -134,6 +134,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 100px;
+    margin-top: 30px;
     width: 85vw;
 }
 
@@ -258,4 +259,134 @@
 
 .pd {
     margin-right: 8px;
+}
+
+.contributions {
+    margin-bottom: 30px;
+    width: 740px;
+}
+
+.contrib-title {
+    font-size: 20px;
+    text-align: center;
+    padding: 15px 0 10px 0;
+    font-family: "Quicksand-SemiBold";
+}
+
+.contrib-flex {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, .3) -4px 9px 25px -6px;
+}
+
+.contrib-table {
+    margin-bottom: 50px;
+    transition: .3s;
+    width: 100%;
+}
+
+table {
+    padding: 0px 15px 30px 15px;
+    height: 100%;
+    width: 100%;
+}
+
+td {
+    padding: 0;
+    margin: 0;
+}
+
+.contrib-top-row {
+    height: 30px;
+}
+
+.contrib-left-column {
+    width: 30px;
+}
+
+.contrib-display {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.contrib-row {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 2%;
+    margin-right: 3px;
+}
+
+.contrib-day {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    margin-bottom: 2px;
+    border-radius: 2px;
+}
+
+.contrib-info {
+    left: -61px;
+    z-index: 1000;
+    visibility: hidden;
+    bottom: 18px;
+    cursor: default;
+    position: absolute;
+    width: 140px;
+    font-size: 8px;
+    height: 16px;
+    transition: opacity .05s;
+    text-align: center;
+}
+
+.contrib-info-top {
+    font-family: "Quicksand-Medium";
+    color: white;
+    border-radius: 5px;
+    width: 100%;
+    height: 16px;
+    background-color: rgb(148, 148, 148);
+}
+
+.contrib-info-ins {
+    position: relative;
+    top: 2px;
+}
+
+.contrib-day:hover +.contrib-info {
+    visibility: visible !important;
+}
+
+.contrib-day-container {
+    position: relative;
+}
+
+.contrib-info-triangle {
+    position: absolute;
+    left: 61px;
+    top: 95%;
+	width: 0;
+	height: 0;
+	border-width: 5px 5px 0 5px;
+    justify-self: center;
+	border-color: rgb(148, 148, 148) transparent transparent transparent;
+	border-style: solid;
+}
+
+.contrib-months {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 28px;
+}
+
+.contrib-month {
+    width: calc(100/12 * 1%);
+    font-size: 9px;
+    font-family: "Quicksand-Medium";
 }

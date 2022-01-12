@@ -48,12 +48,12 @@ export default function Data({user, userInfo, languages, repos }) {
                 repos={repos}
             />
 
-            <Repos        
-                repos={repos}
-            />
-
             <Contributions
                 user={user}
+            />
+
+            <Repos        
+                repos={repos}
             />
 
         </div>

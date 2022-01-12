@@ -1,7 +1,7 @@
 import { BiBuildings } from "react-icons/bi";
 import { MdLocationOn, MdEmail } from "react-icons/md";
 import {BsCalendarEvent} from "react-icons/bs";
-import getDate from "../utils/date";
+import {getDate} from "../utils/date.js";
 
 export default function Info({ company, location, email, following, followers, repoCount, date }) {
 
