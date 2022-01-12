@@ -12,7 +12,7 @@ export default function Contributions({user}) {
     const getContributions = (user) => {
         try {
             getGithubContributions({
-                username: 'job',
+                username: user,
                 token: token
               }).then((r) => {
                 setContribs(r.data.data.user.contributionsCollection.contributionCalendar);
