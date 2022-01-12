@@ -16,7 +16,6 @@ export default function Contributions({user}) {
           }).then((r) => {
             setContribs(r.data.data.user.contributionsCollection.contributionCalendar);
             setMonthOrder(getMonthOrder(r.data.data.user.contributionsCollection.contributionCalendar));
-            console.log(contribs);
           })
     };
 
