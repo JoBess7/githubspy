@@ -13,7 +13,7 @@ export default function Contributions({user}) {
 
     async function getContributions(user) {
         const headers = {
-            'Authorization': `bearer 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`,
+            'Authorization': `bearer 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`,
         }
         const body = {
             "query": `query {
