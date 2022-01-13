@@ -3,17 +3,44 @@ import { getGithubContributions } from 'github-contributions-counter';
 import { token } from "./secret/env";
 import SimpleLoader from "./SimpleLoader";
 import { getMonthOrder, getParsedDate} from "../utils/date";
+import { createTokenAuth } from "@octokit/auth-token";
+import { request } from '@octokit/request';
 
 export default function Contributions({user}) {
 
     const [contribs, setContribs] = useState(null);
     const [monthOrder, setMonthOrder] = useState(null);
 
-    const getContributions = (user) => {
-        return fetch("https://github-contributions.vercel.app/api/v1/jobess7")
-        .then((r) => {
-            console.log(r);
-        })
+    async function getContributions(user) {
+        const headers = {
+            'Authorization': `bearer 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`,
+        }
+        const body = {
+            "query": `query {
+                user(login: "${user}") {
+                  name
+                  contributionsCollection {
+                    contributionCalendar {
+                      colors
+                      totalContributions
+                      weeks {
+                        contributionDays {
+                          color
+                          contributionCount
+                          date
+                          weekday
+                        }
+                        firstDay
+                      }
+                    }
+                  }
+                }
+              }`
+        }
+        const response = await fetch('https://api.github.com/graphql', { method: 'POST', body: JSON.stringify(body), headers: headers })
+        const data = await response.json()
+        console.log(data);
+        return data
     };
 
     useEffect(() => {
@@ -26,6 +53,7 @@ export default function Contributions({user}) {
             {
                 contribs && monthOrder
                 ?
+                
                 <div className="contrib-flex">
                     <span className="contrib-title">Contributions in the Last Year</span>
                     <div className="contrib-table">
