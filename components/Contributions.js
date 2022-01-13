@@ -11,36 +11,12 @@ export default function Contributions({user}) {
     const [contribs, setContribs] = useState(null);
     const [monthOrder, setMonthOrder] = useState(null);
 
-    async function getContributions(user) {
-        const headers = {
-            'Authorization': `bearer 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`,
-        }
-        const body = {
-            "query": `query {
-                user(login: "${user}") {
-                  name
-                  contributionsCollection {
-                    contributionCalendar {
-                      colors
-                      totalContributions
-                      weeks {
-                        contributionDays {
-                          color
-                          contributionCount
-                          date
-                          weekday
-                        }
-                        firstDay
-                      }
-                    }
-                  }
-                }
-              }`
-        }
-        const response = await fetch('https://api.github.com/graphql', { method: 'POST', body: JSON.stringify(body), headers: headers })
-        const data = await response.json()
-        console.log(data);
-        return data
+    function getContributions(user) {
+        return fetch("https://gh-calendar.rschristian.dev/user/job")
+        .then((r) => r.json())
+        .then((r) => {
+            console.log(r.contributions)
+        })
     };
 
     useEffect(() => {
