@@ -3,23 +3,35 @@ import { getMonthOrder, getParsedDate} from "../utils/date";
 
 export default function Contributions({user}) {
 
-    const colors = ["#ebedf0", "#9be9a8", "#40c463", "#216e39"];
+    const colors = ["#e3e3e3", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
     const [contribs, setContribs] = useState(null);
-    const [monthOrder, setMonthOrder] = useState([]);
+    const [monthOrder, setMonthOrder] = useState(null);
 
+    const getContributionString = (count) => {
+        if(count === 0) return "No contributions ";
+        else if(count === 1) return count + " contribution ";
+        else return count + " contributions ";
+    }
+ 
     function getContributions(user) {
         return fetch(`https://gh-calendar.rschristian.dev/user/${user}`)
         .then((r) => r.json())
         .then((r) => {
-            setMonthOrder(getMonthOrder(r));
             setContribs(r);
+
+            if(!("message" in r)) 
+                setMonthOrder(getMonthOrder(r));
+
         })
+        .catch((err) => {
+            // do nothing
+        });
+
     };
 
     useEffect(() => {
         getContributions(user);
     }, []);
-
 
     return (
         <div className="contributions">
@@ -45,7 +57,11 @@ export default function Contributions({user}) {
                                     </td>
                                 </tr>
                                 <tr className="contrib-bottom-row">
-                                    <td></td>
+                                    <td className="contrib-left-b">
+                                        <span className="mon">Mon</span>
+                                        <span className="wed">Wed</span>
+                                        <span className="fri">Fri</span>
+                                    </td>
                                     <td>
                                         <div className="contrib-display">
                                             {
@@ -60,17 +76,14 @@ export default function Contributions({user}) {
                                                                             <div style={{backgroundColor: colors[day.intensity]}} className="contrib-day"/>
                                                                             <div className="contrib-info">
                                                                                 <div className="contrib-info-top">
-                                                                                    <span className="contrib-info-ins">{
-                                                                                        day.count === 0
-                                                                                        ?
-                                                                                        "No contributions "
-                                                                                        :
-                                                                                        day.count + " contributions "
-                                                                                    }
-                                                                                    on
-                                                                                    {
-                                                                                        " " + getParsedDate(day.date)
-                                                                                    }
+                                                                                    <span className="contrib-info-ins">
+                                                                                        {
+                                                                                            getContributionString(day.count)
+                                                                                        }
+                                                                                        on
+                                                                                        {
+                                                                                            " " + getParsedDate(day.date)
+                                                                                        }
                                                                                     </span>
                                                                                 </div>
 
@@ -90,6 +103,21 @@ export default function Contributions({user}) {
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div className="contrib-gen-flex">
+                        <div className="contrib-gen-info">
+                            {contribs.total} contributions in the last year
+                        </div>
+
+                        <div className="less-more-flex">
+                            <span>Less</span>
+                            <div style={{backgroundColor: colors[0]}} className="less-more-square"/>
+                            <div style={{backgroundColor: colors[1]}} className="less-more-square"/>   
+                            <div style={{backgroundColor: colors[2]}} className="less-more-square"/>  
+                            <div style={{backgroundColor: colors[3]}} className="less-more-square"/>  
+                            <div style={{backgroundColor: colors[4]}} className="less-more-square"/>                      
+                            <span>More</span>
+                        </div>
                     </div>
                 </div>
                 :

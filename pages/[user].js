@@ -66,9 +66,8 @@ export default function User() {
 
              userPoly.getAllRepos(function (err, stats) {
                 if(err) {
-                    if(err.includes("limit")) {
-                        setError({active: true, message: "Limit rate exceeded, try again later."});
-                    }
+                    setError({active: true, message: "Limit rate exceeded, try again later."});
+                    
                 } else {
                     resolve(stats);
                 }
