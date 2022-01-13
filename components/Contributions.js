@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react";
-import { getGithubContributions } from 'github-contributions-counter';
-import { token } from "./secret/env";
-import SimpleLoader from "./SimpleLoader";
 import { getMonthOrder, getParsedDate} from "../utils/date";
-import { createTokenAuth } from "@octokit/auth-token";
-import { request } from '@octokit/request';
 
 export default function Contributions({user}) {
 
+    const colors = ["#ebedf0", "#9be9a8", "#40c463", "#216e39"];
     const [contribs, setContribs] = useState(null);
-    const [monthOrder, setMonthOrder] = useState(null);
+    const [monthOrder, setMonthOrder] = useState([]);
 
     function getContributions(user) {
-        return fetch("https://gh-calendar.rschristian.dev/user/job")
+        return fetch(`https://gh-calendar.rschristian.dev/user/${user}`)
         .then((r) => r.json())
         .then((r) => {
-            console.log(r.contributions)
+            setMonthOrder(getMonthOrder(r));
+            setContribs(r);
         })
     };
 
@@ -52,23 +49,23 @@ export default function Contributions({user}) {
                                     <td>
                                         <div className="contrib-display">
                                             {
-                                                contribs.weeks.map((contrib, index) => {
+                                                contribs.contributions.map((contrib, index) => {
                                                     return (
                                                         <div className={"contrib-row row" + index} key={index}>
                                                             {
-                                                                contrib.contributionDays.map((day, idx) => {
+                                                                contrib.map((day, idx) => {
                                                                     return (
                                                                         <div key={idx} className="contrib-day-container">
                                                                             
-                                                                            <div style={{backgroundColor: day.contributionCount === 0 ? "rgba(0, 0, 0, 0.05)" : day.color}} className="contrib-day"/>
+                                                                            <div style={{backgroundColor: colors[day.intensity]}} className="contrib-day"/>
                                                                             <div className="contrib-info">
                                                                                 <div className="contrib-info-top">
                                                                                     <span className="contrib-info-ins">{
-                                                                                        day.contributionCount === 0
+                                                                                        day.count === 0
                                                                                         ?
                                                                                         "No contributions "
                                                                                         :
-                                                                                        day.contributionCount + " contributions "
+                                                                                        day.count + " contributions "
                                                                                     }
                                                                                     on
                                                                                     {

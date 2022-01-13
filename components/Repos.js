@@ -11,7 +11,7 @@ export default function Repos({repos}) {
     const [chosenRepos, setChosenRepos] = useState([]);
     const [by, setBy] = useState("stargazers_count");
     const [display, setDisplay] = useState("8");
-    console.log(chosenRepos)
+
     useEffect(() => {
         setChosenRepos(getTopRepos(repos, parseInt(display), by));
     }, [by, display]);

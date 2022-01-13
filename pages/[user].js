@@ -92,7 +92,7 @@ export default function User() {
                 )
                 .then(() => setLoaded(true))
                 .catch(error => {
-                    console.log(error)
+  
                 });
         }
 
