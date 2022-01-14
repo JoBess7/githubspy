@@ -2,7 +2,7 @@
 
 GithubSpy offers a nice visual of statistics about your GitHub profile. It is built with Next.js and is hosted on [Vercel](https://vercel.com/ 'visit vercel').
 
-| :exclamation:  This is very important   |
+| :exclamation:  This project was initially Britanny Chiang's idea. However, The code is mine. |
 |-----------------------------------------|
 
 ![](./assets/images/projectImage.png "")
