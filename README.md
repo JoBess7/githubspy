@@ -7,4 +7,4 @@ The statistics that appear on the dashboard are fetched from several APIs listed
 
 * **GitHub Contribution Calendar API**: [https://gh-calendar.rschristian.dev/user](https://gh-calendar.rschristian.dev/user 'visit website -->')
 * **Github API**: [https://api.github.com/rate_limit](https://gh-calendar.rschristian.dev/user 'visit website -->')
-   yes
+   - yes
