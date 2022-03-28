@@ -1,9 +1,6 @@
 # [GithubSpy](https://githubspy.vercel.app/ 'visit website -->')
 
-GithubSpy offers a nice visual of statistics about your GitHub profile. It is built with Next.js and is hosted on [Vercel](https://vercel.com/ 'visit vercel').
-
-| :exclamation:  This project was initially Britanny Chiang's idea. However, The code is mine. |
-|-----------------------------------------|
+GithubSpy offers a nice visual of statistics about your GitHub profile. It is built with Next.js and is hosted on [Vercel](https://vercel.com/ 'visit vercel').|
 
 ![](./assets/images/projectImage.png "")
 
