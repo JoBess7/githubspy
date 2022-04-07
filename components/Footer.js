@@ -7,8 +7,6 @@ export default function Footer() {
                 <div className="built-info-flex">
                     <span>Built by Jonathan Bessette</span>
                 </div>
-
-
             </div>
         </footer>
     );
